@@ -29,7 +29,7 @@
 | Source Node Type | Why it is a source |
 |---|---|
 | Start Node |This is a source because the algorithm will start here|
-| Dunegon Node |Each dungeon node will also be a start node because you must visit every dungeon node (so they too become starting nodes)|
+| Dunegon Node |Since we need to visit multiple dungeons sequentially, one dungeon may become a start node in the path to another. |
 
 ### Part 2b: Distance Storage
 
