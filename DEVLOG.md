@@ -1,7 +1,7 @@
 # Development Log – The Torchbearer
 
-**Student Name:** ___________________________
-**Student ID:** ___________________________
+**Student Name:** Ryan Desrosiers
+**Student ID:** 130096873
 
 > Instructions: Write at least four dated entries. Required entry types are marked below.
 > Two to five sentences per entry is sufficient. Write entries as you go, not all in one
@@ -10,12 +10,12 @@
 
 ---
 
-## Entry 1 – [Date]: Initial Plan
+## Entry 1 – 05/06/26: Initial Plan
 
 > Required. Write this before writing any code. Describe your plan: what you will
 > implement first, what parts you expect to be difficult, and how you plan to test.
 
-_Your entry here._
+I will go through the exam in order of how it is given and try to complete it piece by piece. If one part is difficult and can be skipped, I will preferably try to complete everything I can then go into more difficult pieces after. I expect the "find optimal route" parts to be the most difficult. To test, I am planning on creating some test cases and ensuring it functions correctly (a good amount of test cases and edge cases). 
 
 ---
 
