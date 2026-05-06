@@ -10,13 +10,13 @@
 > per question. Each bullet should be 1-2 sentences max.
 
 - **Why a single shortest-path run from S is not enough:**
-  _Your answer here._
+  A single shortest path would only give the shortest path from S to all the different dungeon locations. But we need the path that visits multiple nodes in the shortest overall path. 
 
 - **What decision remains after all inter-location costs are known:**
-  _Your answer here._
+  Once the shortest path between any and all two nodes is calculated, the order between the multiple nodes that we need to visit must still be decided. 
 
 - **Why this requires a search over orders (one sentence):**
-  _Your answer here._
+  Since there will be many different combinations of orders (shortest path to different nodes combined), a search over the many different orders is needed.
 
 ---
 
@@ -28,8 +28,8 @@
 
 | Source Node Type | Why it is a source |
 |---|---|
-| _node type_ | _one-line reason_ |
-| _node type_ | _one-line reason_ |
+| Start Node |This is a source because the algorithm will start here|
+| Dunegon Node |Each dungeon node will also be a start node because you must visit every dungeon node (so they too become starting nodes)|
 
 ### Part 2b: Distance Storage
 
@@ -37,11 +37,11 @@
 
 | Property | Your answer |
 |---|---|
-| Data structure name | |
-| What the keys represent | |
-| What the values represent | |
-| Lookup time complexity | |
-| Why O(1) lookup is possible | |
+| Data structure name |List of Tuples |
+| What the keys represent |The keys represent the nodes |
+| What the values represent |The current shortest distance found to this node|
+| Lookup time complexity | O(N)?|
+| Why O(1) lookup is possible |...?| if first elem? ... idk 
 
 ### Part 2c: Precomputation Complexity
 
