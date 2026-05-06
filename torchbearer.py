@@ -2,8 +2,8 @@
 CS 460 – Algorithms: Final Programming Assignment
 The Torchbearer
 
-Student Name: ___________________________
-Student ID:   ___________________________
+Student Name: Ryan Desrosiers 
+Student ID:   130096873
 
 INSTRUCTIONS
 ------------
@@ -25,16 +25,10 @@ import heapq
 # =============================================================================
 
 def explain_problem():
-    """
-    Returns
-    -------
-    str
-        Your Part 1 README answers, written as a string.
-        Must match what you wrote in README Part 1.
-
-    TODO
-    """
-    return "TODO"
+    answer1 = "A single shortest path would only give the shortest path from S to all the different dungeon locations. But we need the path that visits multiple nodes in the shortest overall path." 
+    answer2 = "Once the shortest path between any and all two nodes is calculated, the order between the multiple nodes that we need to visit must still be decided."
+    answer3 = "Since there will be many different combinations of orders (shortest path to different nodes combined), a search over the many different orders is needed."
+    return answer1 + answer2 + answer3
 
 
 # =============================================================================
