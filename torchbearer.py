@@ -50,6 +50,12 @@ def select_sources(spawn, relics, exit_node):
 
     TODO
     """
+    answer = set()
+    answer.add(spawn)
+    for relic in relics: 
+        answer.add(relic)
+    answer.add(exit_node)
+    answer = list(answer)
     pass
 
 
