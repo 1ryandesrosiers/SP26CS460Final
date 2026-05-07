@@ -19,12 +19,12 @@ I will go through the exam in order of how it is given and try to complete it pi
 
 ---
 
-## Entry 2 – [Date]: [Short description]
+## Entry 2 – 05/07/26: Day 2
 
 > Required. At least one entry must describe a bug, wrong assumption, or design change
 > you encountered. Describe what went wrong and how you resolved it.
 
-_Your entry here._
+_Your entry here._^^ 
 
 ---
 
