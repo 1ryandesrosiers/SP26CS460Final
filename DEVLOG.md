@@ -49,7 +49,7 @@ _Your entry here._
 
 | Part | Estimated Hours |
 |---|---|
-| Part 1: Problem Analysis | |
+| Part 1: Problem Analysis | ~1 hour |
 | Part 2: Precomputation Design | |
 | Part 3: Algorithm Correctness | |
 | Part 4: Search Design | |
