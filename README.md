@@ -37,11 +37,11 @@
 
 | Property | Your answer |
 |---|---|
-| Data structure name |List of Tuples |
+| Data structure name |Dictionary |
 | What the keys represent |The keys represent the nodes |
 | What the values represent |The current shortest distance found to this node|
-| Lookup time complexity | O(N)?|
-| Why O(1) lookup is possible |...?| if first elem? ... idk 
+| Lookup time complexity | O(1) because it uses hashing to store the values|
+| Why O(1) lookup is possible |Because it uses hashing, the key leads directly to the value| 
 
 ### Part 2c: Precomputation Complexity
 
