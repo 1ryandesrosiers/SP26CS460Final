@@ -47,7 +47,7 @@
 
 > State the total complexity and show the arithmetic. Two to three lines max.
 
-- **Number of Dijkstra runs:** _your answer_
+- **Number of Dijkstra runs:** The dijkstra algorithm is run for every source node. 
 - **Cost per run:** _your answer_
 - **Total complexity:** _your answer_
 - **Justification (one line):** _your answer_
@@ -65,23 +65,23 @@
 > Do not copy the invariant text from the spec.
 
 - **For nodes already finalized (in S):**
-  _Your answer here._
+  For every finalized node, the distance stored for it is the shortest distance from the source to that node. 
 
 - **For nodes not yet finalized (not in S):**
-  _Your answer here._
+  For every node that is not yet finalized, the distance stored for it is the shortest current known path from the sourde to that node. 
 
 ### Part 3b: Why Each Phase Holds
 
 > One to two bullets per phase. Maintenance must mention nonnegative edge weights.
 
 - **Initialization : why the invariant holds before iteration 1:**
-  _Your answer here._
+ The invariant holds before iteration 1 because before the first iteration, none of the paths to other nodes are discovered yet. Since no paths are known, the distance for every node but the source node is set to infinity (marking unreachable for now). Then the distance to the source node, is the distance to itself which is zero. 
 
 - **Maintenance : why finalizing the min-dist node is always correct:**
-  _Your answer here._
+ The min-dist node is always correct because since a priority queue is used, that was the shortest distance from all known unfinalized distances in the priority queue. Since another path to this node would only be found through future unknown paths, that would only add cost later and therefore not be the minimum. *************** change this explanation later ***** 
 
 - **Termination : what the invariant guarantees when the algorithm ends:**
-  _Your answer here._
+  When the algorithm ends that means all reachable node have been finalized. Since every finalized node has the current possible distance stored, and every node is finalized, every path known is the shortest possible path from the source to the node. 
 
 ### Part 3c: Why This Matters for the Route Planner
 
