@@ -98,11 +98,11 @@ The shortest possible distances from the source to every node are necessary piec
 > State the failure mode. Then give a concrete counter-example using specific node names
 > or costs (you may use the illustration example from the spec). Three to five bullets.
 
-- **The failure mode:** _Your answer here._
-- **Counter-example setup:** _Your answer here._
-- **What greedy picks:** _Your answer here._
-- **What optimal picks:** _Your answer here._
-- **Why greedy loses:** _Your answer here._
+- **The failure mode: The failure mode happens when the closest relic chosen by a greedy decision does not lead to the optimal global path. 
+- **Counter-example setup:** For a counter example, consider the following graph: (A->B: 1), (A->C: 2), (C->B: 2), (B->C: 4), (C->D: 1), (B->D: 1). Suppose the relics are at B and C, and the start and end nodes are A and D respectively. 
+- **What greedy picks:** The greedy choice would be the closest possible relic which would be the relic at B. 
+- **What optimal picks:** The optimal choice would be going to the relic C first. 
+- **Why greedy loses:** The path that greedy would choose is: (A->B->C->D which costs 6), whereas the optimal is: (A->C->B->D: which costs 5). 
 
 ### What the Algorithm Must Explore
 
