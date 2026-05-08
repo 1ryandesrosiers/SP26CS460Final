@@ -87,7 +87,7 @@
 
 > One sentence connecting correct distances to correct routing decisions.
 
-_Your answer here._
+The shortest possible distances from the source to every node are necessary pieces of information for the torchbearer to have to be able to visit all the relics and find the shortest path to the end. 
 
 ---
 
