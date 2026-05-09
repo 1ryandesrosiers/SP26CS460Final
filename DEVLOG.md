@@ -24,13 +24,13 @@ I will go through the exam in order of how it is given and try to complete it pi
 > Required. At least one entry must describe a bug, wrong assumption, or design change
 > you encountered. Describe what went wrong and how you resolved it.
 
-_Your entry here._^^ 
+There was a bug in my explore function but i fixed it by writing down the process and thinking it through. 
 
 ---
 
-## Entry 3 – [Date]: [Short description]
+## Entry 3 – 05/09/26: Reviewing
 
-_Your entry here._
+Usually when I have a larger project I try to contribute a little to every part then go back and add more incrementally. From my previous work I already have a good base so I want to fine-tune my read me answers today and finish the last few piecies of the torchbearer.py. 
 
 ---
 
@@ -50,11 +50,11 @@ _Your entry here._
 | Part | Estimated Hours |
 |---|---|
 | Part 1: Problem Analysis | ~1 hour |
-| Part 2: Precomputation Design | |
-| Part 3: Algorithm Correctness | |
-| Part 4: Search Design | |
-| Part 5: State and Search Space | |
-| Part 6: Pruning | |
+| Part 2: Precomputation Design |~1 hour |
+| Part 3: Algorithm Correctness |~1 hour |
+| Part 4: Search Design |~1 hour |
+| Part 5: State and Search Space |~2 hour|
+| Part 6: Pruning |~1 hour |
 | Part 7: Implementation | |
 | README and DEVLOG writing | |
 | **Total** | |
