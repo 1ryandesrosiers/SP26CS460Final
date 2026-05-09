@@ -131,10 +131,10 @@ The shortest possible distances from the source to every node are necessary piec
 
 | Property | Your answer |
 |---|---|
-| Data structure chosen | |
-| Operation: check if relic already collected | Time complexity: |
-| Operation: mark a relic as collected | Time complexity: |
-| Operation: unmark a relic (backtrack) | Time complexity: |
+| Data structure chosen | Set?|
+| Operation: check if relic already collected | Time complexity: O(1)? |
+| Operation: mark a relic as collected | Time complexity: O(1)? |
+| Operation: unmark a relic (backtrack) | Time complexity: O(1)?|
 | Why this structure fits | |
 
 ### Part 5c: Worst-Case Search Space
