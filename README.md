@@ -152,23 +152,23 @@ The shortest possible distances from the source to every node are necessary piec
 
 > Three bullets.
 
-- **What is tracked:** _Your answer here._
-- **When it is used:** _Your answer here._
+- **What is tracked:** The current minimum total cost path that has been found. 
+- **When it is used:** After the algorithm finishes a valid path, it is compared to the running minimum. 
 - **What it allows the algorithm to skip:** _Your answer here._
 
 ### Part 6b: Lower Bound Estimation
 
 > Three bullets.
 
-- **What information is available at the current state:** _Your answer here._
-- **What the lower bound accounts for:** _Your answer here._
-- **Why it never overestimates:** _Your answer here._
+- **What information is available at the current state:** During recursion we must know the current node it's at, a list of relics that we have visited so far, a list of relics that still need to be visited, and the current cost of the path. 
+- **What the lower bound accounts for:** _Your answer here???._
+- **Why it never overestimates:** _Your answer here???._
 
 ### Part 6c: Pruning Correctness
 
 > One to two bullets. Explain why pruning is safe.
 
-- _Your answer here._
+- _Your answer here???._
 
 ---
 
