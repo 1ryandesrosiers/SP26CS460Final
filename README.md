@@ -121,9 +121,9 @@ The shortest possible distances from the source to every node are necessary piec
 
 | Component | Variable name in code | Data type | Description |
 |---|---|---|---|
-| Current location | current | node? | |
-| Relics already collected | collected | List | |
-| Fuel cost so far | costFuel | int | Keeps track of fuel used so far |
+| Current location | current | Node | This node keeps track of where the algorithm is currently. |
+| Relics already collected | collected | List | Keeps a list of relics that already have been visited. |
+| Fuel cost so far | costFuel | int | Keeps track of fuel used up until current location |
 
 ### Part 5b: Data Structure for Visited Relics
 
@@ -131,7 +131,7 @@ The shortest possible distances from the source to every node are necessary piec
 
 | Property | Your answer |
 |---|---|
-| Data structure chosen | Set?|
+| Data structure chosen | Set? |
 | Operation: check if relic already collected | Time complexity: O(1)? |
 | Operation: mark a relic as collected | Time complexity: O(1)? |
 | Operation: unmark a relic (backtrack) | Time complexity: O(1)?|
