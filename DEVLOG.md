@@ -24,22 +24,22 @@ I will go through the exam in order of how it is given and try to complete it pi
 > Required. At least one entry must describe a bug, wrong assumption, or design change
 > you encountered. Describe what went wrong and how you resolved it.
 
-There was a bug in my explore function but i fixed it by writing down the process and thinking it through. 
+When I was initially trying to implement find_optimal_route, I didn't know the helper function was defined just below it that I would have to do later. So I was creating my own, additional helper function. Once I realized that was not needed, I had to scrap that code and start fresh using the provided helper function. 
 
 ---
 
 ## Entry 3 – 05/09/26: Reviewing
 
-Usually when I have a larger project I try to contribute a little to every part then go back and add more incrementally. From my previous work I already have a good base so I want to fine-tune my read me answers today and finish the last few piecies of the torchbearer.py. 
+Usually when I have a larger project I try to contribute a little to every part then go back and add more incrementally. From my previous work I already have a good base so I want to fine-tune my read me answers today and finish the last few functions in torchbearer.py. 
 
 ---
 
-## Entry 4 – [Date]: Post-Implementation Reflection
+## Entry 4 – 05/10/26: Post-Implementation Reflection
 
 > Required. Written after your implementation is complete. Describe what you would
 > change or improve given more time.
 
-_Your entry here._
+Now that the implementation is complete, if I had to go back and change anything, i would modify the code a little. I'm sure there are redundancies throughout the code because I was more focused on the correctness than perfect implementation.
 
 ---
 
