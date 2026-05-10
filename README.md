@@ -13,7 +13,7 @@
   A single shortest path would only give the shortest path from S to all the different dungeon locations. But we need the path that visits multiple nodes in the shortest overall path. 
 
 - **What decision remains after all inter-location costs are known:**
-  Once the shortest path between any and all two nodes is calculated, the order between the multiple nodes that we need to visit must still be decided. 
+  Once the shortest path between any and all two nodes is calculated, the order for the multiple nodes that we need to visit must still be decided. 
 
 - **Why this requires a search over orders (one sentence):**
   Since there will be many different combinations of orders (shortest path to different nodes combined), a search over the many different orders is needed.
@@ -28,8 +28,8 @@
 
 | Source Node Type | Why it is a source |
 |---|---|
-| Start Node |This is a source because the algorithm will start here|
-| Dunegon Node |Since we need to visit multiple dungeons sequentially, one dungeon may become a start node in the path to another. |
+| Start Node | This is a source because the algorithm will start here|
+| Dunegon Node | Since we need to visit multiple dungeons sequentially, one dungeon may become a start node in the path to the next. |
 
 ### Part 2b: Distance Storage
 
@@ -37,8 +37,8 @@
 
 | Property | Your answer |
 |---|---|
-| Data structure name |Dictionary |
-| What the keys represent |The keys represent the nodes |
+| Data structure name | Dictionary |
+| What the keys represent | The keys represent the nodes |
 | What the values represent |The values are an adjacency list with each item being the tuple (node, distance)|
 | Lookup time complexity | O(1) because it uses hashing to store the values|
 | Why O(1) lookup is possible |Because it uses hashing, the key leads directly to the value| 
@@ -47,10 +47,10 @@
 
 > State the total complexity and show the arithmetic. Two to three lines max.
 
-- **Number of Dijkstra runs:** The dijkstra algorithm is run for every source node. 
-- **Cost per run:** _your answer_
-- **Total complexity:** _your answer_
-- **Justification (one line):** _your answer_
+- **Number of Dijkstra runs:** The dijkstra algorithm is run for every source node (spawn + end point + relics). 
+- **Cost per run:** Dijkstra relaxes all the edges in a graph, and per edge it does about log(v) work. 
+- **Total complexity:** The total work is O(SELogV). 
+- **Justification (one line):** The total complexity is the number of source nodes (S) times the cost per run of dijkstra which is (ELogV). 
 
 ---
 
@@ -78,16 +78,16 @@
  The invariant holds before iteration 1 because before the first iteration, none of the paths to other nodes are discovered yet. Since no paths are known, the distance for every node but the source node is set to infinity (marking unreachable for now). Then the distance to the source node, is the distance to itself which is zero. 
 
 - **Maintenance : why finalizing the min-dist node is always correct:**
- The min-dist node is always correct because since a priority queue is used, that was the shortest distance from all known unfinalized distances in the priority queue. Since another path to this node would only be found through future unknown paths, that would only add cost later and therefore not be the minimum. *************** change this explanation later ***** 
+ The min-dist node is always correct because a priority queue is used, which means the shortest distance from all known unfinalized distances is extracted. Since another path to this node would only be found through future unknown paths, and there are only nonnegative edge weights, another path would only be more expensive. 
 
 - **Termination : what the invariant guarantees when the algorithm ends:**
-  When the algorithm ends that means all reachable node have been finalized. Since every finalized node has the current possible distance stored, and every node is finalized, every path known is the shortest possible path from the source to the node. 
+  When the algorithm ends that means all reachable node have been finalized. Since every finalized node has the minimum possible distance stored, and every node is finalized, every path known is the shortest possible path from the source to the node. 
 
 ### Part 3c: Why This Matters for the Route Planner
 
 > One sentence connecting correct distances to correct routing decisions.
 
-The shortest possible distances from the source to every node are necessary pieces of information for the torchbearer to have to be able to visit all the relics and find the shortest path to the end. 
+Since we precompute and the store the shortest distances between certain nodes, the correct route must be calculated using those true shortest distances. 
 
 ---
 
