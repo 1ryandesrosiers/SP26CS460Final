@@ -108,7 +108,7 @@ Since we precompute and the store the shortest distances between certain nodes, 
 
 > One bullet. Must use the word "order."
 
-- _Your answer here._
+The algorithm must explore different orders of visiting relics using the precomputed shortest distances. 
 
 ---
 
@@ -131,18 +131,18 @@ Since we precompute and the store the shortest distances between certain nodes, 
 
 | Property | Your answer |
 |---|---|
-| Data structure chosen | Set? |
-| Operation: check if relic already collected | Time complexity: O(1)? |
-| Operation: mark a relic as collected | Time complexity: O(1)? |
-| Operation: unmark a relic (backtrack) | Time complexity: O(1)?|
-| Why this structure fits | |
+| Data structure chosen | Set |
+| Operation: check if relic already collected | Time complexity: O(1) |
+| Operation: mark a relic as collected | Time complexity: O(1) |
+| Operation: unmark a relic (backtrack) | Time complexity: O(1)|
+| Why this structure fits | A set is more efficient for checking for members, inserting and taking out nodes, additionally order does not matter here |
 
 ### Part 5c: Worst-Case Search Space
 
 > Two bullets.
 
-- **Worst-case number of orders considered:** _Your answer (in terms of k)._
-- **Why:** _One-line justification._
+- **Worst-case number of orders considered:** The worst case would be k! permutations. 
+- **Why:** Since you are exploring all possible orders/permutations of k relics, with no pruning the number is k factorial. 
 
 ---
 
@@ -154,7 +154,7 @@ Since we precompute and the store the shortest distances between certain nodes, 
 
 - **What is tracked:** The current minimum total cost path that has been found. 
 - **When it is used:** After the algorithm finishes a valid path, it is compared to the running minimum. 
-- **What it allows the algorithm to skip:** _Your answer here._
+- **What it allows the algorithm to skip:** It allows the algorithm to skip some orders that are already worse than the current minimum and therefore could not be the best solution. 
 
 ### Part 6b: Lower Bound Estimation
 
