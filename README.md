@@ -161,14 +161,13 @@ The algorithm must explore different orders of visiting relics using the precomp
 > Three bullets.
 
 - **What information is available at the current state:** During recursion we must know the current node it's at, a list of relics that we have visited so far, a list of relics that still need to be visited, and the current cost of the path. 
-- **What the lower bound accounts for:** _Your answer here???._
-- **Why it never overestimates:** _Your answer here???._
-
+- **What the lower bound accounts for:** The lower bound acts as an estimate of what the minimum possible total cost of the current path could be. 
+- **Why it never overestimates:** The lower bound is always a very safe estimation and assumes a best-case scenario so it will never overestimate a path cost.  
 ### Part 6c: Pruning Correctness
 
 > One to two bullets. Explain why pruning is safe.
 
-- _Your answer here???._
+- Pruning is always safe here because the lower bound is always an under-estimate, since it is always an underestimate it will never prune a valid solution by mistake (only those that are unnecessary to compute). 
 
 ---
 
@@ -176,4 +175,4 @@ The algorithm must explore different orders of visiting relics using the precomp
 
 > Bullet list. If none beyond lecture notes, write that.
 
-- _Your references here._
+- Lecture Notes
