@@ -12,7 +12,7 @@
 
 ## Entry 1 – 05/06/26: Initial Plan
 
-I will go through the exam in order of how it is given and try to complete it piece by piece. With longer assignments like these I usually try to at least start every question/piece then go back and add to them incrementally. I expect the "find optimal route" and "explore" parts to be the most difficult because I think that will be the bulk of the implementation. To test, I am planning on creating some test cases and ensuring it functions correctly (with normal input and edge cases). 
+I will go through the exam in order of how it is laid out, and try to complete it piece by piece. With longer assignments like these, I usually try to at least start every question/piece then go back and add to them incrementally. I expect the "find optimal route" and "explore" parts to be the most difficult because I think that will be the bulk of the implementation. To test, I am planning on creating some extra test cases and ensuring it functions correctly (with normal input and edge cases). 
 
 ---
 
@@ -22,13 +22,13 @@ One wrong assumption I made when completing this project was when I was initiall
 
 ---
 
-## Entry 3 – 05/09/26: Reviewing
+## Entry 3 – 05/10/26: Reviewing
 
-Usually when I have a larger project I try to contribute a little to every part then go back and add more incrementally. From my previous days' work, I have implemented more or less the core logic for a good amount of torchbearer.py, and I have answered most of the quicker questions from the readme. Today, I will go through and try to add more substance to each question on the readme as well as improve the implementation in the code. 
+From my previous days' work, I have implemented more or less the core logic for a good amount of torchbearer.py. Additionally, I have answered most of the quicker questions from the readme. Today, I will go through and try to add more substance to each question on the readme as well as improve the implementation in the code. 
 
 ---
 
-## Entry 4 – 05/10/26: Post-Implementation Reflection
+## Entry 4 – 05/12/26: Post-Implementation Reflection
 
 Now that the implementation is complete, if I had to go back and change anything, I would spend more time modifying the code. I'm sure there are redundancies in logic and syntax throughout the code due to me focusing more on the correctness of the algorithm than the perfect/most efficient implementation. If I had more time to work on it I would revise the code to ensure its efficiency. I could also have added more test cases than I did. 
 
