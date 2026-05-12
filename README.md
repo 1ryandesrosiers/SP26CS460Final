@@ -10,10 +10,10 @@
 > per question. Each bullet should be 1-2 sentences max.
 
 - **Why a single shortest-path run from S is not enough:**
-  A single shortest path would only give the shortest path from S to all the different dungeon locations. But we need the path that visits multiple nodes in the shortest overall path. 
+  A single shortest path would only give the shortest path from S to all the different dungeon locations, but we need the path that visits multiple nodes in the shortest overall path. 
 
 - **What decision remains after all inter-location costs are known:**
-  Once the shortest path between any and all two nodes is calculated, the order for the multiple nodes that we need to visit must still be decided. 
+  Once the shortest path between any and all two nodes is calculated, the order in which we need to visit them must still be decided. 
 
 - **Why this requires a search over orders (one sentence):**
   Since there will be many different combinations of orders (shortest path to different nodes combined), a search over the many different orders is needed.
@@ -29,7 +29,7 @@
 | Source Node Type | Why it is a source |
 |---|---|
 | Start Node | This is a source because the algorithm will start here|
-| Dunegon Node | Since we need to visit multiple dungeons sequentially, one dungeon may become a start node in the path to the next. |
+| Dungeon Node | Since we need to visit multiple dungeons sequentially, each visited node might become a source node for the remaining part of the path. |
 
 ### Part 2b: Distance Storage
 
@@ -39,7 +39,7 @@
 |---|---|
 | Data structure name | Dictionary |
 | What the keys represent | The keys represent the nodes |
-| What the values represent |The values are an adjacency list with each item being the tuple (node, distance)|
+| What the values represent |A dictionary as well|
 | Lookup time complexity | O(1) because it uses hashing to store the values|
 | Why O(1) lookup is possible |Because it uses hashing, the key leads directly to the value| 
 
@@ -48,9 +48,9 @@
 > State the total complexity and show the arithmetic. Two to three lines max.
 
 - **Number of Dijkstra runs:** The dijkstra algorithm is run for every source node (spawn + end point + relics). 
-- **Cost per run:** Dijkstra relaxes all the edges in a graph, and per edge it does about log(v) work. 
-- **Total complexity:** The total work is O(SELogV). 
-- **Justification (one line):** The total complexity is the number of source nodes (S) times the cost per run of dijkstra which is (ELogV). 
+- **Cost per run:** Dijkstra relaxes all the edges in a graph, and since we used a heap, those actions cost about log(v) work. 
+- **Total complexity:** The total work is O(S*ELogV). 
+- **Justification (one line):** Dijkstra will be run from every source node. So, the total complexity is the number of source nodes (S) times the cost per run of dijkstra which is (ELogV) --> S * ELogV = (S*ELogV). 
 
 ---
 
