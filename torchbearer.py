@@ -25,10 +25,10 @@ import heapq
 # =============================================================================
 
 def explain_problem():
-    answer1 = "A single shortest path would only give the shortest path from S to all the different dungeon locations. But we need the path that visits multiple nodes in the shortest overall path." 
-    answer2 = "Once the shortest path between any and all two nodes is calculated, the order between the multiple nodes that we need to visit must still be decided."
-    answer3 = "Since there will be many different combinations of orders (shortest path to different nodes combined), a search over the many different orders is needed."
-    return answer1 + answer2 + answer3
+    a1 = "A single shortest path would only give the shortest path from S to all the different dungeon locations, but we need the path that visits multiple nodes in the shortest overall path." 
+    b1 = "Once the shortest path between any and all two nodes is calculated, the order in which we need to visit them must still be decided."
+    c1 = "Since there will be many different combinations of orders (shortest path to different nodes combined), a search over the many different orders is needed."
+    return a1 + b1 + c1
 
 
 # =============================================================================
@@ -50,13 +50,13 @@ def select_sources(spawn, relics, exit_node):
 
     TODO
     """
-    answer = set()
+    answer = set() # set for no duplicates then make into list 
     answer.add(spawn)
     for relic in relics: 
         answer.add(relic)
     answer.add(exit_node)
     answer = list(answer)
-    pass
+    return answer
 
 
 def run_dijkstra(graph, source):
@@ -75,7 +75,26 @@ def run_dijkstra(graph, source):
 
     TODO
     """
-    pass
+    distances = {}
+    visited = set()
+    for node in graph:
+        distances[node] = float('inf')
+    distances[source] = 0
+    prq = []
+    heapq.heappush(prq, (0, source)) # init priority queue with source node 
+    while prq: 
+        # check neighbors to relax edges? 
+        current = heapq.heappop(prq)  
+        node = current[1]
+        distance = current[0]
+        if node in visited: 
+            continue 
+        visited.add(node)
+        for neighbor, cost in graph[node]:
+            if distance + cost < distances[neighbor]:
+                distances[neighbor] = distance + cost
+                heapq.heappush(prq, (distance + cost, neighbor))
+    return distances 
 
 
 def precompute_distances(graph, spawn, relics, exit_node):
@@ -95,7 +114,11 @@ def precompute_distances(graph, spawn, relics, exit_node):
 
     TODO
     """
-    pass
+    shortest_paths = {}
+    nodes = select_sources(spawn, relics, exit_node)
+    for node in nodes: 
+        shortest_paths[node] = run_dijkstra(graph, node)
+    return shortest_paths
 
 
 # =============================================================================
@@ -112,7 +135,20 @@ def dijkstra_invariant_check():
 
     TODO
     """
-    return "TODO"
+    a3 = """ Part 3a: What the Invariant Means
+For nodes already finalized (in S): For every finalized node, the distance stored for it is the shortest distance from the source to that node.
+For nodes not yet finalized (not in S): For every node that is not yet finalized, the distance stored for it is the shortest current known path from the sourde to that node."""
+    b3 = """Part 3b: Why Each Phase Holds
+Initialization : why the invariant holds before iteration 1: The invariant holds before iteration 1 because before the first iteration, none of the paths to other nodes are discovered yet. Since no paths are known, the distance for every node but the source node is set to infinity (marking unreachable for now). Then the distance to the source node, is the distance to itself which is zero.
+
+Maintenance : why finalizing the min-dist node is always correct: The min-dist node is always correct because a priority queue is used, which means the shortest distance from all known unfinalized distances is extracted. Since another path to this node would only be found through future unknown paths, and there are only nonnegative edge weights, another path would only be more expensive.
+
+Termination : what the invariant guarantees when the algorithm ends: When the algorithm ends that means all reachable node have been finalized. Since every finalized node has the minimum possible distance stored, and every node is finalized, every path known is the shortest possible path from the source to the node.
+
+"""
+    c3 = """Part 3c: Why This Matters for the Route Planner
+Since we precompute and the store the shortest distances between certain nodes, the correct route must be calculated using those true shortest distances."""
+    return a3 + b3 + c3 
 
 
 # =============================================================================
@@ -129,7 +165,17 @@ def explain_search():
 
     TODO
     """
-    return "TODO"
+    part4 = """Why Greedy Fails
+**The failure mode: The failure mode happens when the closest relic chosen by a greedy decision does not lead to the optimal global path.
+Counter-example setup: For a counter example, consider the following graph: (A->B: 1), (A->C: 2), (C->B: 2), (B->C: 4), (C->D: 1), (B->D: 1). Suppose the relics are at B and C, and the start and end nodes are A and D respectively.
+What greedy picks: The greedy choice would be the closest possible relic which would be the relic at B.
+What optimal picks: The optimal choice would be going to the relic C first.
+Why greedy loses: The path that greedy would choose is: (A->B->C->D which costs 6), whereas the optimal is: (A->C->B->D: which costs 5).
+What the Algorithm Must Explore
+The algorithm must explore different orders of visiting relics using the precomputed shortest distances.
+
+    """
+    return part4
 
 
 # =============================================================================
@@ -153,10 +199,15 @@ def find_optimal_route(dist_table, spawn, relics, exit_node):
     tuple[float, list[node]]
         (minimum_fuel_cost, ordered_relic_list)
         Returns (float('inf'), []) if no valid route exists.
+    
 
     TODO
     """
-    pass
+    collected = []
+    cost = 0
+    best_solution_sofar = [float('inf'), []] # best cost of path so far - 0, empty list for best path of nodes 
+    _explore(dist_table, spawn, relics, collected, cost, exit_node, best_solution_sofar)
+    return (best_solution_sofar[0], best_solution_sofar[1]) 
 
 
 def _explore(dist_table, current_loc, relics_remaining, relics_visited_order,
@@ -188,7 +239,20 @@ def _explore(dist_table, current_loc, relics_remaining, relics_visited_order,
     explaining why it is safe (cannot skip the optimal solution).
     This comment is graded.
     """
-    pass
+    if (not relics_remaining): # means no more relics remaining 
+        final_cost = cost_so_far + dist_table[current_loc][exit_node]
+        if (final_cost < best[0]):
+            best[0] = final_cost
+            best[1] = relics_visited_order.copy()
+        return
+    if (cost_so_far >= best[0]): # stop work rn for paths with no possibility of beating current min 
+        return # means were already at or past the current minimum (so this answer will never be more optimal)
+    for relic in relics_remaining:
+        total_cost = cost_so_far + dist_table[current_loc][relic]
+        new_order = relics_visited_order + [relic]
+        remaining_now = [x for x in relics_remaining if x != relic]
+        _explore(dist_table, relic, remaining_now, new_order, total_cost, exit_node, best)
+
 
 
 # =============================================================================
@@ -212,7 +276,8 @@ def solve(graph, spawn, relics, exit_node):
 
     TODO
     """
-    pass
+    dist_table = precompute_distances(graph, spawn, relics, exit_node)
+    return find_optimal_route(dist_table, spawn, relics, exit_node)
 
 
 # =============================================================================
