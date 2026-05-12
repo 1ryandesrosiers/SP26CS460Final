@@ -6,9 +6,6 @@
 
 ## Part 1: Problem Analysis
 
-> Document why this problem is not just a shortest-path problem. Three bullet points, one
-> per question. Each bullet should be 1-2 sentences max.
-
 - **Why a single shortest-path run from S is not enough:**
   A single shortest path would only give the shortest path from S to all the different dungeon locations, but we need the path that visits multiple nodes in the shortest overall path. 
 
@@ -24,16 +21,12 @@
 
 ### Part 2a: Source Selection
 
-> List the source node types as a bullet list. For each, one-line reason.
-
 | Source Node Type | Why it is a source |
 |---|---|
 | Start Node | This is a source because the algorithm will start here|
-| Dungeon Node | Since we need to visit multiple dungeons sequentially, each visited node might become a source node for the remaining part of the path. |
+| Dungeon/Relic Node | Since we need to visit multiple dungeons sequentially, each visited node might become a source node for the remaining part of the path. |
 
 ### Part 2b: Distance Storage
-
-> Fill in the table. No prose required.
 
 | Property | Your answer |
 |---|---|
@@ -45,8 +38,6 @@
 
 ### Part 2c: Precomputation Complexity
 
-> State the total complexity and show the arithmetic. Two to three lines max.
-
 - **Number of Dijkstra runs:** The dijkstra algorithm is run for every source node (spawn + end point + relics). 
 - **Cost per run:** Dijkstra relaxes all the edges in a graph, and since we used a heap, those actions cost about log(v) work. 
 - **Total complexity:** The total work is O(S*ELogV). 
@@ -56,13 +47,8 @@
 
 ## Part 3: Algorithm Correctness
 
-> Document your understanding of why Dijkstra produces correct distances.
-> Bullet points and short sentences throughout. No paragraphs.
-
 ### Part 3a: What the Invariant Means
 
-> Two bullets: one for finalized nodes, one for non-finalized nodes.
-> Do not copy the invariant text from the spec.
 
 - **For nodes already finalized (in S):**
   For every finalized node, the distance stored for it is the shortest distance from the source to that node. 
@@ -72,7 +58,6 @@
 
 ### Part 3b: Why Each Phase Holds
 
-> One to two bullets per phase. Maintenance must mention nonnegative edge weights.
 
 - **Initialization : why the invariant holds before iteration 1:**
  The invariant holds before iteration 1 because before the first iteration, none of the paths to other nodes are discovered yet. Since no paths are known, the distance for every node but the source node is set to infinity (marking unreachable for now). Then the distance to the source node, is the distance to itself which is zero. 
@@ -85,8 +70,6 @@
 
 ### Part 3c: Why This Matters for the Route Planner
 
-> One sentence connecting correct distances to correct routing decisions.
-
 Since we precompute and the store the shortest distances between certain nodes, the correct route must be calculated using those true shortest distances. 
 
 ---
@@ -94,9 +77,6 @@ Since we precompute and the store the shortest distances between certain nodes, 
 ## Part 4: Search Design
 
 ### Why Greedy Fails
-
-> State the failure mode. Then give a concrete counter-example using specific node names
-> or costs (you may use the illustration example from the spec). Three to five bullets.
 
 - **The failure mode: The failure mode happens when the closest relic chosen by a greedy decision does not lead to the optimal global path. 
 - **Counter-example setup:** For a counter example, consider the following graph: (A->B: 1), (A->C: 2), (C->B: 2), (B->C: 4), (C->D: 1), (B->D: 1). Suppose the relics are at B and C, and the start and end nodes are A and D respectively. 
@@ -106,8 +86,6 @@ Since we precompute and the store the shortest distances between certain nodes, 
 
 ### What the Algorithm Must Explore
 
-> One bullet. Must use the word "order."
-
 The algorithm must explore different orders of visiting relics using the precomputed shortest distances. 
 
 ---
@@ -116,30 +94,23 @@ The algorithm must explore different orders of visiting relics using the precomp
 
 ### Part 5a: State Representation
 
-> Document the three components of your search state as a table.
-> Variable names here must match exactly what you use in torchbearer.py.
-
 | Component | Variable name in code | Data type | Description |
 |---|---|---|---|
-| Current location | current | Node | This node keeps track of where the algorithm is currently. |
-| Relics already collected | collected | List | Keeps a list of relics that already have been visited. |
-| Fuel cost so far | costFuel | int | Keeps track of fuel used up until current location |
+| Current location | current_loc | Node | This node keeps track of where the algorithm is currently. |
+| Relics already collected | relics_visited_order | List | Keeps a list of relics that already have been visited. |
+| Fuel cost so far | cost_so_far | int | Keeps track of fuel used up until current location |
 
 ### Part 5b: Data Structure for Visited Relics
 
-> Fill in the table.
-
 | Property | Your answer |
 |---|---|
-| Data structure chosen | Set |
-| Operation: check if relic already collected | Time complexity: O(1) |
-| Operation: mark a relic as collected | Time complexity: O(1) |
-| Operation: unmark a relic (backtrack) | Time complexity: O(1)|
-| Why this structure fits | A set is more efficient for checking for members, inserting and taking out nodes, additionally order does not matter here |
+| Data structure chosen | List |
+| Operation: check if relic already collected | Time complexity: O(n) |
+| Operation: mark a relic as collected | Time complexity: O(n) |
+| Operation: unmark a relic (backtrack) | Time complexity: O(n)|
+| Why this structure fits | A list is used to keep track of the order they were visited. |
 
 ### Part 5c: Worst-Case Search Space
-
-> Two bullets.
 
 - **Worst-case number of orders considered:** The worst case would be k! permutations. 
 - **Why:** Since you are exploring all possible orders/permutations of k relics, with no pruning the number is k factorial. 
@@ -150,24 +121,21 @@ The algorithm must explore different orders of visiting relics using the precomp
 
 ### Part 6a: Best-So-Far Tracking
 
-> Three bullets.
 
-- **What is tracked:** The current minimum total cost path that has been found. 
+- **What is tracked:** The current cost of the path that has been found. 
 - **When it is used:** After the algorithm finishes a valid path, it is compared to the running minimum. 
 - **What it allows the algorithm to skip:** It allows the algorithm to skip some orders that are already worse than the current minimum and therefore could not be the best solution. 
 
 ### Part 6b: Lower Bound Estimation
 
-> Three bullets.
 
 - **What information is available at the current state:** During recursion we must know the current node it's at, a list of relics that we have visited so far, a list of relics that still need to be visited, and the current cost of the path. 
-- **What the lower bound accounts for:** The lower bound acts as an estimate of what the minimum possible total cost of the current path could be. 
-- **Why it never overestimates:** The lower bound is always a very safe estimation and assumes a best-case scenario so it will never overestimate a path cost.  
+- **What the lower bound accounts for:** The lower bound acts as an estimate of what the minimum possible total cost of the current path could be using the precomputed distances that are laid out for the remaining path. 
+- **Why it never overestimates:** The lower bound is always assumes an optimal route path from there on out, therefore it assumes a best-case scenario so it will never overestimate a path cost.  
 ### Part 6c: Pruning Correctness
 
-> One to two bullets. Explain why pruning is safe.
 
-- Pruning is always safe here because the lower bound is always an under-estimate, since it is always an underestimate it will never prune a valid solution by mistake (only those that are unnecessary to compute). 
+- Pruning is always safe here because the lower bound is always an under-estimate. Since it is an optimistic estimate, it will never prune a valid solution by mistake (only those that are unnecessary to compute and will not possibly beat the current minimum). 
 
 ---
 
